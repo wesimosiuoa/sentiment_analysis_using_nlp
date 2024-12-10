@@ -6,6 +6,15 @@ The project generates two main types of visualizations:
 
 **1. Bar Chart**: Shows the count of positive, negative, and neutral sentiments.
 **2. Pie Chart**: Displays the percentage distribution of each sentiment type.
+
+## Contributing
+If you'd like to contribute to the project, feel free to fork the repository and submit a pull request.
+
+## License
+You can use this markdown content for your README file to give an overview of your project, its features, installation instructions, and code usage.
+
+
+
 ## Features
 
 - **Sentiment Analysis**: Classifies text as Positive, Negative, or Neutral.
