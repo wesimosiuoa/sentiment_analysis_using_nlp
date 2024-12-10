@@ -6,6 +6,8 @@ nltk.download('punkt')
 nltk.download('punkt_tab')
 from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
+import matplotlib.pyplot as plt
+from collections import Counter
 # from nltk.tokenize import word_tokenize
 
 from nltk.tokenize import word_tokenize
@@ -61,3 +63,36 @@ df["Sentiment"] = df["Text"].apply(get_sentiment)
 print(df) 
 print ("  Processed \n ", df['Processed_Text'])
 print ("  Sentiment \n ", df['Sentiment'])
+
+
+sentiments = [get_sentiment(text) for text in df["Text"]]
+
+# Count occurrences of each sentiment
+sentiment_counts = Counter(sentiments)
+
+# Create a bar plot for sentiment distribution
+labels = sentiment_counts.keys()
+values = sentiment_counts.values()
+
+plt.figure(figsize=(8, 6))
+plt.bar(labels, values, color=['green', 'red', 'gray'])
+
+# Adding title and labels
+plt.title("Sentiment Distribution Bar Chart  - Reviews from different platforms. ")
+plt.xlabel("Sentiment")
+plt.ylabel("Count")
+plt.show()
+
+
+labels = list(sentiment_counts.keys())  
+sizes = list(sentiment_counts.values())  
+colors = ['green', 'red', 'gray'] 
+plt.figure(figsize=(7, 7))
+plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140, explode=(0.1, 0, 0))
+plt.title("Sentiment Distribution Pie Chart - Reviews from different platforms.  ")
+plt.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle.
+plt.show()
+
+
+
+
